@@ -42,7 +42,7 @@ function my_git_prompt() {
     STATUS=" $STATUS"
   fi
 
-  echo "$ZSH_THEME_GIT_PROMPT_PREFIX$(my_current_branch)$STATUS$ZSH_THEME_GIT_PROMPT_SUFFIX"
+  echo "$ZSH_THEME_GIT_PROMPT_PREFIX$(my_current_branch)]$STATUS$ZSH_THEME_GIT_PROMPT_SUFFIX"
 }
 
 function my_current_branch() {
@@ -56,7 +56,7 @@ function ssh_connection() {
 }
 
 ZSH_THEME_PROMPT_RETURNCODE_PREFIX="%{$fg[red]%}"
-ZSH_THEME_GIT_PROMPT_PREFIX=" $fg[white] %{$fg[cyan]%}"
+ZSH_THEME_GIT_PROMPT_PREFIX=" $fg[white] %{$fg[cyan]%}["
 ZSH_THEME_GIT_PROMPT_AHEAD="%{$fg[magenta]%}↑"
 ZSH_THEME_GIT_PROMPT_STAGED="%{$fg[green]%}●"
 ZSH_THEME_GIT_PROMPT_UNSTAGED="%{$fg[red]%}●"
@@ -66,5 +66,5 @@ ZSH_THEME_GIT_PROMPT_SUFFIX=" $fg[white]%{$reset_color%}"
 
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
-PROMPT='%{$fg[cyan]%}[$(virtualenv_info)]%{$reset_color%} $(my_git_prompt)
+PROMPT='$(my_git_prompt)
 $(ssh_connection)%{$fg[green]%}%1~%{$reset_color%}%{$fg[red]%}%{$reset_color%}%{$fg[green]%} ⇒%{$reset_color%} '
